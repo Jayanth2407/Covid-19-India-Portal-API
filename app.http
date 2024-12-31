@@ -1,0 +1,62 @@
+# User Login to generate JWT token
+POST http://localhost:3000/login/
+Content-Type: application/json
+
+{
+  "username": "your_username",
+  "password": "your_password"
+}
+
+### States ###
+
+# Get all states
+GET http://localhost:3000/states/
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+# Get a specific state by stateId
+GET http://localhost:3000/states/1
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+### Districts ###
+
+# Get a specific district by districtId
+GET http://localhost:3000/districts/1
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+# Add a new district
+POST http://localhost:3000/districts/
+Content-Type: application/json
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+{
+  "stateId": 1,
+  "districtName": "Sample District",
+  "cases": 100,
+  "cured": 50,
+  "active": 45,
+  "deaths": 5
+}
+
+# Update an existing district by districtId
+PUT http://localhost:3000/districts/1
+Content-Type: application/json
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+{
+  "districtName": "Updated District",
+  "stateId": 1,
+  "cases": 200,
+  "cured": 150,
+  "active": 40,
+  "deaths": 10
+}
+
+# Delete a district by districtId
+DELETE http://localhost:3000/districts/1
+Authorization: Bearer <YOUR_JWT_TOKEN>
+
+### Statistics ###
+
+# Get statistics of a state by stateId
+GET http://localhost:3000/states/1/stats/
+Authorization: Bearer <YOUR_JWT_TOKEN>
